@@ -1,6 +1,19 @@
 <template>
-  <VueHeader/>
+  
+  <VueHeader
+    v-if="showHeader"
+  />
+
+  <div v-show="showName">
+    Nome: {{ name }}
+  </div>
+
+  <div v-if="accessLevel === 'admin'">Admin</div>
+  <div v-else-if="accessLevel === 'tech'">Technician</div>
+  <div v-else>User</div>
+  
   <img alt="Vue logo" src="./assets/logo.png">
+  
   <HelloWorld msg="Welcome to Your Vue.js App"/>
 </template>
 
@@ -12,6 +25,15 @@ export default {
   name: 'App',
   components: {
     HelloWorld, VueHeader
+  },
+
+  data() {
+    return {
+      showHeader: true, 
+      name: 'Ivan HS',
+      showName: false,
+      accessLevel: 'admin',
+    }
   }
 }
 </script>
